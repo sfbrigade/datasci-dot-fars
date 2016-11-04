@@ -1,5 +1,5 @@
 # dswg-dot-fars
-The Department of Transportation recently released a [call-to-action](https://www.transportation.gov/fastlane/2015-traffic-fatalities-data-has-just-been-released-call-action-download-and-analyze) for help analyzing their traffic fatality data after traffic fatalities spiked by 7.2% in 2015. As part of the San Francisco's data science working group, we're trying tofind ways to analyze the data in novel ways to help understand what caused the increase and what can be done to reduce deaths in the future.
+The Department of Transportation recently released a [call-to-action](https://www.transportation.gov/fastlane/2015-traffic-fatalities-data-has-just-been-released-call-action-download-and-analyze) for help analyzing their traffic fatality data after traffic fatalities spiked by 7.2% in 2015. As part of the San Francisco's data science working group, we're trying to find ways to analyze the data in novel ways to help understand what caused the increase and what can be done to reduce deaths in the future.
 
 # Current prompts
 

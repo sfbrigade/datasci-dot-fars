@@ -20,7 +20,7 @@ We've just gotted started digging into our current prompts. We work at the Code 
 
 # Team members
 - Zachery Thomas
-- Brian Smith
+- Brian Smith (project lead)
 - Mike Bridge
 - PeiDa Kuo
 - Kevin Vo

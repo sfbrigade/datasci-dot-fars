@@ -13,3 +13,15 @@ The Department of Transportation recently released a [call-to-action](https://ww
 - [Google doc](https://docs.google.com/document/d/1DdfepuAdvDB-fsR3c8c7y7-Pc9jzNEtRQsDfbB_mfXI/edit#) scratchpad for ideas and links we've found.
 - [Raw data through 2001](https://numeracy.co/sirwart/traffic-fatalities/accidents)
 - [Data dictionary](https://crashstats.nhtsa.dot.gov/Api/Public/ViewPublication/812315)
+
+# Status
+
+We've just gotted started digging into our current prompts. We work at the Code for San Francisco hack night every Wednesday if you want to stop by and help with one of our existing prompts or start a new one.
+
+# Team members
+- Zachery Thomas
+- Brian Smith
+- Mike Bridge
+- PeiDa Kuo
+- Kevin Vo
+- Collin Ross

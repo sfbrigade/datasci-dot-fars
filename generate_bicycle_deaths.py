@@ -12,6 +12,7 @@ def generate_bicycle_deaths():
 		for person_row in csv.reader(person_f):
 			if header_row == None:
 				person_row.append("FIPS")
+                                person_row.append("CITY")
 				person_row.append("LATITUDE")
 				person_row.append("LONGITUD")
 				header_row = person_row
@@ -46,6 +47,7 @@ def generate_bicycle_deaths():
 			case_year = accident["ST_CASE"] + "-" + accident["YEAR"]
 			deaths = rows_by_case_year[case_year]
 			for row in deaths:
+                                row.append(accident["CITY"])
 				row.append(accident["LATITUDE"])
 				row.append(accident["LONGITUD"])
 

@@ -23,7 +23,8 @@ def get_safety_data(year, make):
     for vehicle in vehicles:
         warning = vehicle['Features'].get('Feature8006', {'OptionValue':'Not available'})['OptionValue']
         auto_braking = vehicle['Features'].get('Feature8020', {'OptionValue':'Not available'})['OptionValue']
-        data_list.append({'year':year, 'make':make, 'warning':warning, 'auto_braking':auto_braking})
+        model = vehicle['SeriesName']
+        data_list.append({'year':year, 'make':make, 'model':model, 'warning':warning, 'auto_braking':auto_braking})
     return data_list
 
 
@@ -39,4 +40,4 @@ if __name__ == '__main__':
             data_list.extend(get_safety_data(year, make))
 
     df = pd.DataFrame(data_list)
-    # df.to_csv('autobraking_data.csv', index=False)
+    df.to_csv('autobraking_data.csv', index=False)

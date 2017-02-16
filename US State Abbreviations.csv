@@ -1,0 +1,53 @@
+Name,Postal Code,FIPS,Census region
+Alabama,AL,1,South
+Alaska,AK,2,West
+Arizona,AZ,4,West
+Arkansas,AR,5,South
+California,CA,6,West
+Colorado,CO,8,West
+Connecticut,CT,9,Northeast
+Delaware,DE,10,South
+District of Columbia,DC,11,South
+Florida,FL,12,South
+Georgia,GA,13,South
+Hawaii,HI,15,West
+Idaho,ID,16,West
+Illinois,IL,17,Midwest
+Indiana,IN,18,Midwest
+Iowa,IA,19,Midwest
+Kansas,KS,20,Midwest
+Kentucky,KY,21,South
+Louisiana,LA,22,South
+Maine,ME,23,Northeast
+Maryland,MD,24,South
+Massachusetts,MA,25,Northeast
+Michigan,MI,26,Midwest
+Minnesota,MN,27,Midwest
+Mississippi,MS,28,South
+Missouri,MO,29,Midwest
+Montana,MT,30,West
+Nebraska,NE,31,Midwest
+Nevada,NV,32,West
+New Hampshire,NH,33,Northeast
+New Jersey,NJ,34,Northeast
+New Mexico,NM,35,West
+New York,NY,36,Northeast
+North Carolina,NC,37,South
+North Dakota,ND,38,Midwest
+Ohio,OH,39,Midwest
+Oklahoma,OK,40,South
+Oregon,OR,41,West
+Pennsylvania,PA,42,Northeast
+Puerto Rico,PR,72,
+Rhode Island,RI,44,Northeast
+South Carolina,SC,45,South
+South Dakota,SD,46,Midwest
+Tennessee,TN,47,South
+Texas,TX,48,South
+Utah,UT,49,West
+Vermont,VT,50,Northeast
+Virginia,VA,51,South
+Washington,WA,53,West
+West Virginia,WV,54,South
+Wisconsin,WI,55,Midwest
+Wyoming,WY,56,West

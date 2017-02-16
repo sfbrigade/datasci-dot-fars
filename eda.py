@@ -4,7 +4,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 vmt=pd.read_csv('./vmt.csv')
 bikers=pd.read_csv('./bicycle_commuters_by_state.csv')
+bikers=bikers[bikers['Survey']=='ACS5']
 bikers.rename(inplace=True,columns={'Geography':'state_abbv','Year':'year'})
+
+
 states=pd.read_csv('./US State Abbreviations.csv')
 states.rename(columns={'Postal Code':'state_abbv','Name':'state'},inplace=True)
 
@@ -45,9 +48,12 @@ deaths_vmt_bikers_year=deaths_vmt_bikers_state_year.groupby('year').agg({
 
 
 deaths_vmt_bikers_year=pd.DataFrame(deaths_vmt_bikers_year).reset_index()
+print deaths_vmt_bikers_year
+print deaths_vmt_bikers_state_year
+# print vmt[(vmt['year']==2010)&(vmt['month']==4)].sum()
 
 
-print vmt[(vmt['year']==2010)&(vmt['month']==4)].sum()
+deaths_vmt_bikers_state_year.to_csv('deaths_vmt_bikers_state_year.csv')
 
 
 sns.pairplot(deaths_vmt_bikers_year,hue='year',palette='husl',markers=["o", "s", "D",'x','v','8'])

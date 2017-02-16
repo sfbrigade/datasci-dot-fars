@@ -61,7 +61,7 @@ def write_csv():
     for book in open_xls():
         yr,mo,wkb,file=book
 
-        sheet = wkb.sheet_by_name('Page 4')
+        sheet = wkb.sheet_by_name('Page 6')
         sht_month= sheet.cell_value(rowx=2,colx=3)
         sht_year=int(sheet.cell_value(rowx=4,colx=5))
 
@@ -85,3 +85,4 @@ def write_csv():
 
 
 
+write_csv()

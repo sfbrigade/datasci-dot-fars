@@ -1,0 +1,60 @@
+---
+title: "Interrupted time series"
+author: "Kevin Vo"
+date: "2/15/2017"
+output: html_document
+---
+## Section 1
+
+We first load in the necessary libraries and set the working directory.
+```{r message=FALSE}
+setwd("/Users/kevinavo/Documents/datasci-dot-fars-master")
+library(plm)
+library(data.table)
+library(DataCombine)
+library(plyr)
+```
+
+## Section 2
+Now we adjust the variables to a per capita basis and create an indicator variables for the segmented regression.
+```{r message=FALSE}
+#Read in and clean the data
+df = read.csv('bike.csv')
+df['X'] = NULL
+names(df) = tolower(names(df))
+df = rename(df, c("bicycle.commuters" = 'bicycle_commuters'))
+
+#Generate per capita variables
+qVars = c('bike_deaths', 'vmt','commuters', 'bicycle_commuters')
+tempdf = data.frame(sweep(df[qVars], 1, df[, 'population'], FUN = '/'))
+colnames(tempdf) = paste(colnames(tempdf), "pc", sep = "_")
+df = cbind(df, tempdf)
+
+#Generate an indicator variable for pre and post year 2015
+df['post'] = as.numeric((df['year'] == 2015))
+df['year'] = df['year'] - 2010
+```
+
+## Section 3
+Now we can proceed with the analysis. Our dependent variable measures bike deaths per capita. We have a variable $year$ which is 0 for the start of the observation period and increments by one for each subsequent year. The variable $post$ is an indicator variable. It takes a value of 0 for observations before 2015 and 1 for observations after 2015. We also include a state level fixed effect. This fixed effect allows us to control for unobservable confounding factors, assuming that confounding factors are on the state level and remain constant over time. For example if we think that income is a counfounding variable, we assume income for a state remains constant and the effect of income is embedded in the fixed effect. In mathematical terms, the model is specified as the following.
+
+$$
+bike\_deaths\_pc_{st} = \beta_{0, st} + \beta_{1, st}year_{st} + \beta_2post_{st} + \gamma_s + \epsilon_{s,t}
+$$
+Here we have $t$ in years and $s$ as state. The intercept $\beta_0$ estimates the baseline level of bike deaths. The coefficient $\beta_1$ estimates the change in the mean number of bike deaths per person per year. The coefficient $\beta_2$ estimates the level change in the mean monthly number of bike deaths per person immediately after 2015.
+
+It is worth noting that an segemented regression usually takes the form
+$$
+bike\_deaths\_pc_{st} = \beta_{0, st} + \beta_{1, st}year_{st} + \beta_2post_{st} + \beta_3post*year_{st} +  \gamma_s + \epsilon_{s,t}
+$$
+
+In the usual specification we have a $\beta_3$, which estimates the change in the trend in the mean number of bike deaths per person after 2015, compared to the yearly trend before 2015. However in our case we don't have an additional year after 2015. We need at least one more year to have a trend. 
+
+
+Now we run our specification. The coefficient on post is the one of interest. The p-value on the coefficent is large, indicating that there is not enough credence to conclude that there was a change in the mean number of bike deaths per person in 2015 compared to the other years. The estimate is indeed positive which falls in line with the first pass, where we saw a positive increase in bike deaths per person.
+
+*Feel free to ignore all the other coefficients those are just the fixed effects* 
+```{r}
+test_fit = lm(bike_deaths_pc ~ year + post + as.factor(state), data = df)
+summary(test_fit)
+```

@@ -83,6 +83,27 @@ def write_csv():
                 text='{},{},{},{},{}\n'.format(row[0].value,row[5].value, sht_year,full_months.index(sht_month)+1,file)
                 vmt_csv.write(text)
 
+def write_csv_single():
+    vmt_csv = open('./vmt_new.csv', 'a')
+    #vmt_csv.write('state,vmt,year,month,file\n')
+
+    wkb=xlrd.open_workbook('./vmt_files/15dectvt.xls')
 
 
-write_csv()
+    sheet = wkb.sheet_by_name('Page 6')
+    sht_month = sheet.cell_value(rowx=2, colx=3)
+    sht_year = 2015  #int(sheet.cell_value(rowx=4, colx=5))
+
+
+    rows = sheet.get_rows()
+
+    for row in rows:
+
+        if row[0].value in states:
+            print row[0].value, row[4].value, sht_year, full_months.index(sht_month) + 1, '15dectvt.xls'
+            text = '{},{},{},{},{}\n'.format(row[0].value, row[4].value, sht_year,
+                                             full_months.index(sht_month) + 1, '15dectvt.xls')
+            vmt_csv.write(text)
+
+write_csv_single()
+                                #write_csv()

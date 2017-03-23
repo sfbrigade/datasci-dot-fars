@@ -50,15 +50,14 @@ def data():
 
     print dfm_st.head()
 
-    exit()
+
 
     dfm_st_vmt=pd.merge(dfm_st,vmt,left_on=['Name','YEAR','MONTH'],right_on=['state','year','month'],how='inner')
     pop_data=pd.read_csv('./bicycle_commuters_by_state.csv')
-    pop_data=pop_data[pop_data.Survey=='ACS5'][pop_data.Geography!='US'].groupby('Year')['Population'].sum()
+    pop_data=pop_data[pop_data.Survey=='ACS5'][pop_data.Geography!='US'].groupby('Year')['Population'].sum().reset_index()
 
-
-
-
+    print dfm_st_vmt.columns
+    print pop_data.columns
 
     df_st_vmt_pop=pd.merge(dfm_st_vmt,pop_data,how='left',left_on=['Postal Code','YEAR'], right_on=['Geography','Year'])
 

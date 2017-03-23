@@ -3,36 +3,36 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 import numpy as np
 import matplotlib.pyplot as plt
+import statsmodels.api as sm
 from sklearn.preprocessing import StandardScaler,scale
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import regression
 import seaborn as sns
-df=pd.read_csv('deaths_vmt_bikers_state_year.csv')
+df=pd.read_csv('state-outliers/data.csv')
+#deaths_vmt_bikers_state_year.csv')
 '''[u'Unnamed: 0', u'state', u'year', u'state_abbv', u'TEMP_F',
        u'bike_deaths', u'vmt', u'Survey', u'Population', u'Commuters',
-       u'Bicycle commuters']'''
+       u'Bicycle commuters']
+   Index([u'Year', u'State', u'Population', u'Commuters', u'Bicycle commuters',
+       u'VMT', u'No. deaths', u'Deaths per B miles'],
+      dtype='object')
+       '''
+
 print df.columns
 
-g= df.groupby('year').agg({'bike_deaths':'sum','vmt':'sum'})
-print g
-plt.scatter(g.vmt,g.bike_deaths)
-plt.show()
 
-
-#df.drop(['year','Commuters','Unnamed: 0','state','state_abbv', 'TEMP_F','Survey','Bicycle commuters','Population'],axis=1,inplace=True)
-
-dftest=df[df.year>=2015]
-dftrain=df[df.year<2015]
+dftest=df[df.Year>=2015]
+dftrain=df[df.Year<2015]
 
 #print model.score(x,y)
-ytrain=dftrain.pop('bike_deaths')
+ytrain=dftrain.pop('No. deaths')
 
 
-ytest=dftest.pop('bike_deaths')
+ytest=dftest.pop('No. deaths')
 
 
-xtrain=dftrain[['vmt']]
-xtest=dftest[['vmt']]
+xtrain=dftrain[['VMT']]
+xtest=dftest[['VMT']]
 
 #
 # xtrain,xtest,ytrain,ytest,=train_test_split(x,y,train_size=.5)
@@ -41,13 +41,14 @@ xtest=dftest[['vmt']]
 
 #scalery=StandardScaler().fit(ytrain)
 
+xtrain=sm.add_constant(xtrain)
+model=sm.OLS(ytrain,xtrain,hasconst=True)
+results=model.fit()
 
-model=RandomForestRegressor()
 
-model.fit(xtrain,ytrain)
-
-
-print model.score(xtest,ytest)
+print results.summary()
+r2_train= model.score(xtrain,ytrain)
+r2_test= model.score(xtest,ytest)
 
 xpoints=np.matrix(range(0,400000,50000)).T
 ypoints=model.predict(xpoints)
@@ -55,14 +56,17 @@ ypoints=model.predict(xpoints)
 
 
 
-
 plt.figure(figsize=(25,15))
-plt.scatter(xtrain,ytrain,label='Training',color='b')
-plt.scatter(xtest,ytest,label='Testing',color='g')
+plt.scatter(xtrain,ytrain,label='Training R2={:.2f}'.format(r2_train),color='b')
+plt.scatter(xtest,ytest,label='Testing R2={:.2f}'.format(r2_test),color='g')
 
-plt.scatter(xpoints,ypoints,label='Fit',color='r')
-plt.legend()
-
+plt.plot(xpoints,ypoints,label='Fit',color='r',)
+plt.legend(fontsize=24)
+plt.ylabel('bike deaths',fontsize=16)
+plt.xlabel('vehicle miles traveled (M)',fontsize=16)
+plt.title('Bike Deaths vs Vehicle Miles Traveled ',fontsize=26)
+plt.xticks(fontsize=20)
+plt.yticks(fontsize=20)
 plt.show()
 
 

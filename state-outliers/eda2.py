@@ -8,7 +8,7 @@ from sklearn.preprocessing import StandardScaler,scale
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import regression
 import seaborn as sns
-df=pd.read_csv('state-outliers/data.csv')
+df=pd.read_csv('data.csv')
 #deaths_vmt_bikers_state_year.csv')
 '''[u'Unnamed: 0', u'state', u'year', u'state_abbv', u'TEMP_F',
        u'bike_deaths', u'vmt', u'Survey', u'Population', u'Commuters',

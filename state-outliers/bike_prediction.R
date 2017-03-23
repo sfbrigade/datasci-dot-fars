@@ -7,7 +7,7 @@
 rm(list = ls())
 
 Preprocess <- function(){
-	setwd("/Users/kevinavo/Documents/datasci-dot-fars-master")
+	
 	library(plm)
 	library(data.table)
 	library(DataCombine)
@@ -16,7 +16,7 @@ Preprocess <- function(){
 
 MakeData <- function(){
 	#Read in and clean the data
-	df = read.csv('bike_outliers.csv')
+	df = read.csv('data.csv')
 	names(df) = tolower(names(df))
 	df = rename(df, c("bicycle.commuters" = 'bicycle_commuters', 'no..deaths' = 'bike_deaths', 'deaths.per.b.miles' = 'bike_deaths_pc'))
 	

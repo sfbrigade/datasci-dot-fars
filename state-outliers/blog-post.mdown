@@ -1,0 +1,17 @@
+# Why are so many people dying on US roads?
+
+In 2016, the Department of Transportation released a harrowing statistic: 2,348 more people died on US roads in 2015 than the year before. This was the biggest single year jump since 1966, and in response the DOT released a [call-to-action](https://web-beta.archive.org/web/20160831091347/http://www.nhtsa.gov/About+NHTSA/Press+Releases/traffic-fatalities-2015) to help understand why 2015 was such a deadly year. As part of San Francisco's Code for San Francisco Brigade, we tried to understand what was driving this trend.
+
+At first we searched for a root cause, like increases in distracted driving or temperatures that could explain the increase, but ultimately our analyses kept coming up short. Instead of trying to find a cause we asked a different question: what if the roads didn't actually become more dangerous? Could we disprove that?
+
+It may seem obvious that the roads became more dangerous in 2015 since we know a lot more people died, but because the economy was recovering and gas was cheap people were also driving a lot more. More miles driven means more accidents even if the roads are just as safe per mile driven. When you account for total miles driven 2015 was still an increase over 2014, but it was a lower fatal accident rate per mile than it was in 2012.
+
+[Fatalities since 2001]
+
+We wanted to use more rigorous approach to test this theory so we tried two different statistical techniques to see if 2015 was an abnormally deadly year or fit in line with the overall trend since 2010. We also wanted to use these techniques to test some of the categories of fatalities that increased the most in 2015, such as bicyclists and multi-vehicle crashes.
+
+The first test was X and the results were Y
+
+The second test was X and the results were Y
+
+Overall we unable to find evidence that the number of traffic fatalities in 2015 was abnormally high. We’re hoping to incorporate the 2016 data when it’s released so we can see if our analysis continues to support this finding. It’s a little disheartening to see that traffic safety hasn’t been getting better since 2009, but at least it’s not getting worse. Hopefully as newer safety technologies receive significant penetration such as automatic braking traffic safety will start getting better again.

@@ -17,3 +17,7 @@ $$y_{s, t} = \beta_0 + \beta_1 Year_{s} + \beta_2 Post_{s, t} + \alpha_{s} + \ep
 The variable of interest here is the coefficient on the $$Post$$ variable. The coefficient tells us if 2015 is deviant in terms of the dependent variable. If 2015 is deviant, then the sign will be positive and significant. In all the regressions estimated, none of the coefficients are significant. This suggests that 2015 is not abnormal. 
 
 The state-level fixed effect embeds unobservable heterogeneity that is assumed to fixed over time. For example, the regression does not control for demographics even though demographics may be an omitted variable. Demographics tend to evolve slowly so the assumption that it is fixed is reasonable. With the state-level fixed effect all unobserved heterogeneity in demographics at the state level is embedded in $$\alpha$$.
+
+![Table 1](kevin_tables/table1.png?raw=true)
+
+![Table 2](kevin_tables/table2.png?raw=true)

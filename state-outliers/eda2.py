@@ -85,17 +85,14 @@ def plot(m, ax, y_scenario, ystrain=None, ystest=None):
     yline = m.predict(m.xtest)
     ax.plot(m.xtest, m.predict(m.xtest), label='regression', c='b')
 
-    plt.text(.7, .1, 'test R2={:.2f}\ntrain R2={:.2f}'.format(m.score(m.xtest, m.ytest), m.score(m.xtrain, m.ytrain)),
+    plt.text(.7, .1, 'test R2={:.2f}\ntrain R2={:.2f}'.format(m.score(m.xtest, m.ytest), m.score(m.xtrain, m.ytrain),fontsize=16),
              transform=ax.transAxes, fontsize=12)
-    plt.xlabel('Vehicle Miles Traveled', fontsize=17)
+    plt.xlabel('Billion Vehicle Miles Traveled', fontsize=17)
     plt.ylabel('Deaths', fontsize=17)
-    plt.title('{}\n{:.0f} deaths per MVMT'.format(y_scenario, m.coef_[0] * 1e+6), fontsize=20)
+    plt.title('{}\n{:.2f} deaths per BVMT'.format(y_scenario, m.coef_[0] ), fontsize=20)
     plt.legend(loc=2, fontsize=15)
     plt.xticks(rotation=45)
     plt.tight_layout(h_pad=5)
-    # ystest.reset_index()
-    # m.xtest.reset_index()
-    # m.ytest.reset_index()
     if ystest.any():
         for i in range(len(m.xtest)):
             # print(m.xtest.loc[i][0],m.xtest.loc[i].any()>2)
@@ -111,7 +108,7 @@ def plot_scenarios():
 
     f = plt.figure(1, figsize=(20, 12))
     for i, y_scenario in enumerate(y_scenarios):
-        xtrain, ytrain, xtest, ytest, ystrain, ystest = model_data(x=['VMT'], y=y_scenario)
+        xtrain, ytrain, xtest, ytest, ystrain, ystest = model_data(x=['VMT (B)'], y=y_scenario)
 
         print('\n{}'.format(y_scenario))
         m = model(xtrain, ytrain, xtest, ytest)
